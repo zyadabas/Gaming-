@@ -3,288 +3,244 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Student Portfolio</title>
+    <title>Zyad Gaming</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="#" class="logo">Zyad.</a>
-        <div class="nav-links">
-          <a href="#home" class="nav-link active">Home</a>
-          <a href="#about" class="nav-link">About</a>
-          <a href="#projects" class="nav-link">Projects</a>
-          <a href="#skills" class="nav-link">Skills</a>
-          <a href="#contact" class="nav-link">Contact</a>
-        </div>
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </nav>
-    </header>
+    <div class="loader">
+      <div class="loader-content">
+        <div class="loader-circle"></div>
+        <div class="loader-text">Loading...</div>
+      </div>
+    </div>
 
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <span class="pre-title">Hello, I'm</span>
-        <h1 class="glitch" data-text="Zyad Abas">Zyad Abas</h1>
-        <p class="typing-text">
-          Building the future with Machine Learning and Artificial Intelligence
-        </p>
-        <div class="hero-buttons">
-          <a href="#projects" class="cta-button">
-            <span>View My Work</span>
-            <i class="fas fa-arrow-right"></i>
-          </a>
-          <a href="#contact" class="cta-button secondary">
-            <span>Let's Talk</span>
-            <i class="fas fa-envelope"></i>
-          </a>
+    <div id="particles-js"></div>
+
+    <nav>
+      <div class="nav-content">
+        <div class="logo">
+          <span class="logo-text">ZYAD</span>
+          <div class="logo-glow"></div>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#games" class="nav-link">Games</a></li>
+          <li><a href="#schedule" class="nav-link">Schedule</a></li>
+          <li><a href="#social" class="nav-link">Social</a></li>
+        </ul>
+        <div class="menu-toggle">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
         </div>
       </div>
-      <div class="hero-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
+    </nav>
+
+    <header id="home">
+      <div class="hero">
+        <h1 class="glitch" data-text="Welcome to Zyad Gaming">
+          Welcome to Zyad Gaming
+        </h1>
+        <p class="typing-text">Professional Gaming & Streaming</p>
+        <div class="cta-buttons">
+          <a href="#games" class="btn primary">
+            <span>Explore Games</span>
+            <i class="fas fa-gamepad"></i>
+          </a>
+          <a href="#social" class="btn secondary">
+            <span>Follow Me</span>
+            <i class="fas fa-user-plus"></i>
+          </a>
+        </div>
       </div>
       <div class="scroll-indicator">
-        <span>Scroll Down</span>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-    </section>
-
-    <section id="about" class="about">
-      <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-          <div class="about-image">
-            <img
-              src="https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-              alt="Profile Picture"
-            />
-            <div class="image-overlay">
-              <div class="overlay-content">
-                <h3>AI Enthusiast</h3>
-                <p>Machine Learning & Deep Learning</p>
-              </div>
-            </div>
-          </div>
-          <div class="about-text">
-            <p>
-              I am a dedicated AI student with a passion for machine learning
-              and artificial intelligence. My journey in AI began with a
-              fascination for how machines can learn and make decisions. I
-              specialize in deep learning, computer vision, and natural language
-              processing.
-            </p>
-            <div class="education">
-              <h3>Education</h3>
-              <div class="education-item">
-                <i class="fas fa-graduation-cap"></i>
-                <div>
-                  <h4>Bachelor's in Computer Science</h4>
-                  <p>AI Specialization | Expected Graduation: 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="mouse">
+          <div class="wheel"></div>
         </div>
+        <div class="arrow"></div>
       </div>
-    </section>
+    </header>
 
-    <section id="projects" class="projects">
-      <div class="container">
-        <h2 class="section-title">My Projects</h2>
-        <div class="project-grid">
-          <div class="project-card">
-            <div class="project-image">
+    <section id="games" class="games-section">
+      <h2 class="section-title">Featured Games</h2>
+      <div class="games-grid">
+        <div class="game-card">
+          <div class="game-card-inner">
+            <div class="game-card-front">
               <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                alt="Project 1"
+                src="https://cdn1.epicgames.com/offer/fn/FNBR_34-00_C6S2_EGS_Launcher_KeyArt_FNlogo_Blade_1200x1600_1200x1600-0aa5c6ea35dab419ec28980fdb402e89"
+                alt="Fortnite"
               />
-              <div class="project-overlay">
-                <a href="#" class="project-link">
-                  <span>View Project</span>
-                  <i class="fas fa-external-link-alt"></i>
-                </a>
-              </div>
+              <h3>Fortnite</h3>
+              <p>Battle Royale Action</p>
             </div>
-            <div class="project-info">
-              <h3>Image Classification</h3>
-              <p>A deep learning model for image classification using CNN</p>
-              <div class="project-tags">
-                <span>Python</span>
-                <span>TensorFlow</span>
-                <span>CNN</span>
-              </div>
+            <div class="game-card-back">
+              <h3>Fortnite Stats</h3>
+              <ul>
+                <li>K/D Ratio: 3.5</li>
+                <li>Win Rate: 15%</li>
+                <li>Favorite Mode: Solo</li>
+              </ul>
             </div>
           </div>
-          <div class="project-card">
-            <div class="project-image">
+        </div>
+        <div class="game-card">
+          <div class="game-card-inner">
+            <div class="game-card-front">
               <img
-                src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                alt="Project 2"
+                src="https://cdn1.epicgames.com/offer/24b9b5e323bc40eea252a10cdd3b2f10/EGS_LeagueofLegends_RiotGames_S1_2560x1440-80471666c140f790f28dff68d72c384b"
+                alt="League of Legends"
               />
-              <div class="project-overlay">
-                <a href="#" class="project-link">
-                  <span>View Project</span>
-                  <i class="fas fa-external-link-alt"></i>
-                </a>
-              </div>
+              <h3>League of Legends</h3>
+              <p>MOBA Strategy</p>
             </div>
-            <div class="project-info">
-              <h3>Chatbot</h3>
-              <p>AI-powered chatbot using NLP and machine learning</p>
-              <div class="project-tags">
-                <span>Python</span>
-                <span>NLP</span>
-                <span>Transformers</span>
-              </div>
+            <div class="game-card-back">
+              <h3>LoL Stats</h3>
+              <ul>
+                <li>Rank: Diamond</li>
+                <li>Main Role: Mid</li>
+                <li>Favorite Champion: Yasuo</li>
+              </ul>
             </div>
           </div>
-          <div class="project-card">
-            <div class="project-image">
+        </div>
+        <div class="game-card">
+          <div class="game-card-inner">
+            <div class="game-card-front">
               <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                alt="Project 3"
+                src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/f657721a7eb06acae52a29ad3a951f20c1e5fc60-1920x1080.jpg"
+                alt="Valorant"
               />
-              <div class="project-overlay">
-                <a href="#" class="project-link">
-                  <span>View Project</span>
-                  <i class="fas fa-external-link-alt"></i>
-                </a>
-              </div>
+              <h3>Valorant</h3>
+              <p>Tactical Shooter</p>
             </div>
-            <div class="project-info">
-              <h3>Predictive Analytics</h3>
-              <p>Time series prediction using LSTM networks</p>
-              <div class="project-tags">
-                <span>Python</span>
-                <span>LSTM</span>
-                <span>Time Series</span>
-              </div>
+            <div class="game-card-back">
+              <h3>Valorant Stats</h3>
+              <ul>
+                <li>Rank: Immortal</li>
+                <li>Main Agent: Jett</li>
+                <li>Headshot %: 35%</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="game-card">
+          <div class="game-card-inner">
+            <div class="game-card-front">
+              <img
+                src="https://cdn1.epicgames.com/spt-assets/5dcd88f4e2094a698ebffa43438edc33/apex-legends-1o21v.jpg"
+                alt="Apex Legends"
+              />
+              <h3>Apex Legends</h3>
+              <p>Battle Royale</p>
+            </div>
+            <div class="game-card-back">
+              <h3>Apex Stats</h3>
+              <ul>
+                <li>Rank: Master</li>
+                <li>Main Legend: Wraith</li>
+                <li>Kills: 10,000+</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="skills" class="skills">
-      <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <div class="skill-icon">
-              <i class="fas fa-code"></i>
-            </div>
-            <h3>Programming</h3>
-            <div class="skill-items">
-              <span>Python</span>
-              <span>JavaScript</span>
-              <span>R</span>
-              <span>Java</span>
-            </div>
+    <section id="schedule" class="schedule-section">
+      <h2 class="section-title">Streaming Schedule</h2>
+      <div class="schedule-grid">
+        <div class="schedule-card">
+          <div class="schedule-icon"><i class="fas fa-calendar-week"></i></div>
+          <h3>Monday - Friday</h3>
+          <p class="time">8:00 PM - 12:00 AM</p>
+          <p class="stream-type">Main Gaming Stream</p>
+          <div class="schedule-progress">
+            <div class="progress-bar" style="width: 75%"></div>
           </div>
-          <div class="skill-category">
-            <div class="skill-icon">
-              <i class="fas fa-brain"></i>
-            </div>
-            <h3>AI/ML</h3>
-            <div class="skill-items">
-              <span>TensorFlow</span>
-              <span>PyTorch</span>
-              <span>Scikit-learn</span>
-              <span>OpenCV</span>
-            </div>
+        </div>
+        <div class="schedule-card">
+          <div class="schedule-icon"><i class="fas fa-star"></i></div>
+          <h3>Saturday</h3>
+          <p class="time">6:00 PM - 2:00 AM</p>
+          <p class="stream-type">Weekend Special</p>
+          <div class="schedule-progress">
+            <div class="progress-bar" style="width: 90%"></div>
           </div>
-          <div class="skill-category">
-            <div class="skill-icon">
-              <i class="fas fa-tools"></i>
-            </div>
-            <h3>Tools</h3>
-            <div class="skill-items">
-              <span>Git</span>
-              <span>Docker</span>
-              <span>Jupyter</span>
-              <span>VS Code</span>
-            </div>
+        </div>
+        <div class="schedule-card">
+          <div class="schedule-icon"><i class="fas fa-users"></i></div>
+          <h3>Sunday</h3>
+          <p class="time">4:00 PM - 10:00 PM</p>
+          <p class="stream-type">Community Day</p>
+          <div class="schedule-progress">
+            <div class="progress-bar" style="width: 60%"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2 class="section-title">Contact Me</h2>
-        <div class="contact-content">
-          <div class="contact-info">
-            <div class="contact-item">
-              <i class="fas fa-envelope"></i>
-              <div>
-                <h3>Email</h3>
-                <p>email@example.com</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-phone"></i>
-              <div>
-                <h3>Phone</h3>
-                <p>+1 234 567 890</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <div>
-                <h3>Location</h3>
-                <p>University City, Country</p>
-              </div>
-            </div>
+    <section id="social" class="social-section">
+      <h2 class="section-title">Connect With Me</h2>
+      <div class="social-links">
+        <a href="#" class="social-link twitch">
+          <i class="fab fa-twitch"></i>
+          <span>Twitch</span>
+          <div class="social-hover">
+            <p>Live Now!</p>
+            <span class="viewers">1.2K viewers</span>
           </div>
-          <form class="contact-form">
-            <div class="form-group">
-              <input type="text" placeholder="Your Name" required />
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="form-group">
-              <input type="email" placeholder="Your Email" required />
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="form-group">
-              <textarea placeholder="Your Message" required></textarea>
-              <i class="fas fa-comment"></i>
-            </div>
-            <button type="submit" class="submit-button">
-              <span>Send Message</span>
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
-        </div>
+        </a>
+        <a href="#" class="social-link youtube">
+          <i class="fab fa-youtube"></i>
+          <span>YouTube</span>
+          <div class="social-hover">
+            <p>100K Subscribers</p>
+            <span class="videos">500+ Videos</span>
+          </div>
+        </a>
+        <a href="#" class="social-link twitter">
+          <i class="fab fa-twitter"></i>
+          <span>Twitter</span>
+          <div class="social-hover">
+            <p>50K Followers</p>
+            <span class="tweets">Daily Updates</span>
+          </div>
+        </a>
+        <a href="#" class="social-link discord">
+          <i class="fab fa-discord"></i>
+          <span>Discord</span>
+          <div class="social-hover">
+            <p>10K Members</p>
+            <span class="community">Active Community</span>
+          </div>
+        </a>
       </div>
     </section>
 
     <footer>
-      <div class="container">
-        <div class="social-links">
-          <a href="#" class="social-link">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="#" class="social-link">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="#" class="social-link">
-            <i class="fab fa-twitter"></i>
-          </a>
+      <div class="footer-content">
+        <div class="footer-logo">ZYAD</div>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#games">Games</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#social">Social</a>
         </div>
-        <p>&copy; 2024 AI Student Portfolio. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-twitch"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Zyad Gaming. All rights reserved.</p>
       </div>
     </footer>
 

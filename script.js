@@ -1,259 +1,237 @@
-// Mobile Navigation Toggle
-const hamburger = document.querySelector(".hamburger");
-const navLinks = document.querySelector(".nav-links");
-const navLinksItems = document.querySelectorAll(".nav-link");
-
-hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-  hamburger.classList.toggle("active");
-});
-
-// Close mobile menu when a link is clicked
-navLinksItems.forEach((link) => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("active");
-    hamburger.classList.remove("active");
+// Wait for the DOM to be fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize particles.js
+  particlesJS("particles-js", {
+    particles: {
+      number: {
+        value: 80,
+        density: {
+          enable: true,
+          value_area: 800,
+        },
+      },
+      color: {
+        value: "#00ff88",
+      },
+      shape: {
+        type: "circle",
+      },
+      opacity: {
+        value: 0.5,
+        random: false,
+      },
+      size: {
+        value: 3,
+        random: true,
+      },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#00ff88",
+        opacity: 0.4,
+        width: 1,
+      },
+      move: {
+        enable: true,
+        speed: 2,
+        direction: "none",
+        random: false,
+        straight: false,
+        out_mode: "out",
+        bounce: false,
+      },
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: {
+          enable: true,
+          mode: "grab",
+        },
+        onclick: {
+          enable: true,
+          mode: "push",
+        },
+        resize: true,
+      },
+      modes: {
+        grab: {
+          distance: 140,
+          line_linked: {
+            opacity: 1,
+          },
+        },
+        push: {
+          particles_nb: 4,
+        },
+      },
+    },
+    retina_detect: true,
   });
-});
 
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+  // Loading animation
+  const loader = document.querySelector(".loader");
+  window.addEventListener("load", () => {
+    loader.style.opacity = "0";
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 500);
+  });
+
+  // Mobile menu toggle
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    menuToggle.classList.toggle("active");
+  });
+
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        // Close mobile menu if open
+        navLinks.classList.remove("active");
+        menuToggle.classList.remove("active");
+      }
+    });
+  });
+
+  // Scroll animations
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe elements for animation
+  document
+    .querySelectorAll(".game-card, .schedule-card, .social-link")
+    .forEach((el) => {
+      observer.observe(el);
+    });
+
+  // Parallax effect for hero section
+  const hero = document.querySelector("header");
+  window.addEventListener("scroll", () => {
+    const scrolled = window.pageYOffset;
+    hero.style.backgroundPositionY = scrolled * 0.5 + "px";
+  });
+
+  // Typing text effect
+  const typingText = document.querySelector(".typing-text");
+  if (typingText) {
+    const text = typingText.textContent.trim();
+    typingText.textContent = "";
+
+    const textSpan = document.createElement("span");
+    textSpan.className = "typing-text-content";
+    typingText.appendChild(textSpan);
+
+    let i = 0;
+    const typeSpeed = 100; // Adjust typing speed here (milliseconds)
+
+    function typeWriter() {
+      if (i < text.length) {
+        textSpan.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, typeSpeed);
+      }
     }
-  });
-});
 
-// Form Submission Handling
-const contactForm = document.querySelector(".contact-form");
-contactForm.addEventListener("submit", function (e) {
-  e.preventDefault();
+    // Start typing animation when the element is in view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(typeWriter, 500);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
 
-  // Get form data
-  const formData = new FormData(this);
-  const data = Object.fromEntries(formData);
-
-  // Simulate form submission
-  console.log("Form submitted:", data);
-
-  // Show success message
-  const submitButton = this.querySelector(".submit-button");
-  const originalContent = submitButton.innerHTML;
-  submitButton.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-  submitButton.style.background = "var(--accent-color)";
-
-  // Reset form and button after delay
-  setTimeout(() => {
-    this.reset();
-    submitButton.innerHTML = originalContent;
-    submitButton.style.background = "";
-  }, 3000);
-});
-
-// Scroll Reveal Animation
-const revealElements = document.querySelectorAll(".reveal");
-const revealOnScroll = () => {
-  revealElements.forEach((element) => {
-    const elementTop = element.getBoundingClientRect().top;
-    const elementVisible = 150;
-
-    if (elementTop < window.innerHeight - elementVisible) {
-      element.classList.add("active");
-    }
-  });
-};
-
-window.addEventListener("scroll", revealOnScroll);
-
-// Initial styles for elements
-revealElements.forEach((element) => {
-  element.style.opacity = "0";
-  element.style.transform = "translateY(30px)";
-  element.style.transition = "all 0.8s ease";
-});
-
-// Active Navigation Link
-const sections = document.querySelectorAll("section");
-const navItems = document.querySelectorAll(".nav-link");
-
-const setActiveNavItem = () => {
-  let current = "";
-
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    if (pageYOffset >= sectionTop - 60) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navItems.forEach((item) => {
-    item.classList.remove("active");
-    if (item.getAttribute("href").slice(1) === current) {
-      item.classList.add("active");
-    }
-  });
-};
-
-window.addEventListener("scroll", setActiveNavItem);
-
-// Header Scroll Effect
-const header = document.querySelector("header");
-let lastScroll = 0;
-
-const headerScrollEffect = () => {
-  const currentScroll = window.pageYOffset;
-
-  if (currentScroll <= 0) {
-    header.classList.remove("scrolled");
-    return;
+    observer.observe(typingText);
   }
 
-  if (currentScroll > lastScroll && !header.classList.contains("scroll-down")) {
-    // Scroll Down
-    header.classList.remove("scrolled");
-    header.classList.add("scroll-down");
-  } else if (
-    currentScroll < lastScroll &&
-    header.classList.contains("scroll-down")
-  ) {
-    // Scroll Up
-    header.classList.remove("scroll-down");
-    header.classList.add("scrolled");
+  // Game card flip animation
+  document.querySelectorAll(".game-card").forEach((card) => {
+    card.addEventListener("mouseenter", () => {
+      card.querySelector(".game-card-inner").style.transform =
+        "rotateY(180deg)";
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.querySelector(".game-card-inner").style.transform = "rotateY(0)";
+    });
+  });
+
+  // Social link hover effects
+  document.querySelectorAll(".social-link").forEach((link) => {
+    link.addEventListener("mouseenter", () => {
+      link.querySelector(".social-hover").style.opacity = "1";
+    });
+
+    link.addEventListener("mouseleave", () => {
+      link.querySelector(".social-hover").style.opacity = "0";
+    });
+  });
+
+  // Schedule progress bars animation
+  document.querySelectorAll(".progress-bar").forEach((bar) => {
+    const width = bar.style.width;
+    bar.style.width = "0";
+    setTimeout(() => {
+      bar.style.width = width;
+    }, 200);
+  });
+
+  // Glitch effect for title
+  const glitchText = document.querySelector(".glitch");
+  if (glitchText) {
+    setInterval(() => {
+      glitchText.classList.add("active");
+      setTimeout(() => {
+        glitchText.classList.remove("active");
+      }, 200);
+    }, 3000);
   }
 
-  lastScroll = currentScroll;
-};
+  // Scroll to top button
+  const scrollButton = document.createElement("button");
+  scrollButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+  scrollButton.className = "scroll-top";
+  document.body.appendChild(scrollButton);
 
-window.addEventListener("scroll", headerScrollEffect);
-
-// Typing Text Effect
-const typingText = document.querySelector(".typing-text");
-const text = typingText.textContent;
-typingText.textContent = "";
-
-let i = 0;
-const typeWriter = () => {
-  if (i < text.length) {
-    typingText.textContent += text.charAt(i);
-    i++;
-    setTimeout(typeWriter, 100);
-  }
-};
-
-// Start typing effect when page loads
-window.addEventListener("load", typeWriter);
-
-// Glitch Effect
-const glitchText = document.querySelector(".glitch");
-const glitchInterval = 2000; // Time between glitches in ms
-
-const glitchEffect = () => {
-  glitchText.classList.add("glitch-effect");
-
-  setTimeout(() => {
-    glitchText.classList.remove("glitch-effect");
-  }, 200);
-};
-
-// Random glitch effect
-setInterval(() => {
-  if (Math.random() > 0.7) {
-    // 30% chance of glitch
-    glitchEffect();
-  }
-}, glitchInterval);
-
-// Scroll Indicator
-const scrollIndicator = document.querySelector(".scroll-indicator");
-let scrollIndicatorTimeout;
-
-const showScrollIndicator = () => {
-  clearTimeout(scrollIndicatorTimeout);
-  scrollIndicator.classList.add("visible");
-
-  scrollIndicatorTimeout = setTimeout(() => {
-    scrollIndicator.classList.remove("visible");
-  }, 3000);
-};
-
-// Show scroll indicator on page load
-window.addEventListener("load", showScrollIndicator);
-
-// Hide scroll indicator when scrolling
-window.addEventListener("scroll", () => {
-  scrollIndicator.classList.remove("visible");
-});
-
-// Project Cards Hover Effect
-const projectCards = document.querySelectorAll(".project-card");
-
-projectCards.forEach((card) => {
-  card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = (y - centerY) / 10;
-    const rotateY = (centerX - x) / 10;
-
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-  });
-
-  card.addEventListener("mouseleave", () => {
-    card.style.transform =
-      "perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)";
-  });
-});
-
-// Skill Items Animation
-const skillItems = document.querySelectorAll(".skill-items span");
-
-skillItems.forEach((item) => {
-  item.addEventListener("mouseenter", () => {
-    item.style.transform = "scale(1.1) translateY(-5px)";
-  });
-
-  item.addEventListener("mouseleave", () => {
-    item.style.transform = "scale(1) translateY(0)";
-  });
-});
-
-// Contact Form Input Animation
-const formInputs = document.querySelectorAll(
-  ".form-group input, .form-group textarea"
-);
-
-formInputs.forEach((input) => {
-  input.addEventListener("focus", () => {
-    input.parentElement.classList.add("focused");
-  });
-
-  input.addEventListener("blur", () => {
-    if (!input.value) {
-      input.parentElement.classList.remove("focused");
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 300) {
+      scrollButton.classList.add("show");
+    } else {
+      scrollButton.classList.remove("show");
     }
   });
-});
 
-// Social Links Hover Effect
-const socialLinks = document.querySelectorAll(".social-link");
-
-socialLinks.forEach((link) => {
-  link.addEventListener("mouseenter", () => {
-    link.style.transform = "translateY(-5px) rotate(360deg)";
-  });
-
-  link.addEventListener("mouseleave", () => {
-    link.style.transform = "translateY(0) rotate(0)";
+  scrollButton.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   });
 });
